@@ -23,3 +23,12 @@ export const register = createAsyncThunk(
     }
   }
 );
+
+export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+  try {
+    await axios.post("/users/logout");
+    clearAuthHeader();
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
