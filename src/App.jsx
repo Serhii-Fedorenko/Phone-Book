@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Layout from "./Components/Layout";
 import Contacts from "./Pages/Contacts";
 import Home from "./Pages/Home";
 import LogIn from "./Pages/LogIn";
 import Register from "./Pages/Register";
 import { refreshUser } from "./redux/auth/operations";
+import { useAuth } from "./hooks/useAuth";
 
 function App() {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector((state) => state.auth.isRefreshing);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
