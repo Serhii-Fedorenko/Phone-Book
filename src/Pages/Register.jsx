@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import RegisterForm from "../Components/RegisterForm";
 import { register } from "../redux/auth/operations";
 
 const Register = () => {
@@ -14,28 +15,9 @@ const Register = () => {
         password: form.elements.password.value,
       })
     );
-    form.reset()
+    form.reset();
   };
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input type="text" name="name" />
-      </label>
-      <br />
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <br />
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <br />
-      <button type="submit">Sign Up</button>
-    </form>
-  );
+  return <RegisterForm handleSubmit={handleSubmit} />;
 };
 
 export default Register;

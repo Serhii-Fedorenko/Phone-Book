@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Contact from "../Components/Contact";
+import ContactForm from "../Components/ContactForm";
 import {
   addContact,
   deleteContact,
@@ -31,27 +33,11 @@ const Contacts = () => {
   return (
     <div>
       <h2>Contacts Page</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input type="text" name="name" />
-        </label>
-        <label>
-          Phone
-          <input type="tel" name="tel" />
-        </label>
-        <button type="submit">Add Contact</button>
-      </form>
+      <ContactForm handleSubmit={handleSubmit} />
       <ul>
         {contacts &&
-          contacts.map((item) => (
-            <li key={item.id}>
-              <span style={{ marginRight: "10px" }}>{item.name}</span>
-              <span>{item.number}</span>
-              <span>
-                <button onClick={() => handleDelete(item.id)}>Delete</button>
-              </span>
-            </li>
+          contacts.map((contact) => (
+            <Contact contact={contact} handleDelete={handleDelete} />
           ))}
       </ul>
     </div>

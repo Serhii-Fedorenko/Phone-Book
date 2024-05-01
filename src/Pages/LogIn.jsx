@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import LoginForm from "../Components/LoginForm";
 import { logIn } from "../redux/auth/operations";
 
 const LogIn = () => {
@@ -13,24 +14,10 @@ const LogIn = () => {
         password: form.elements.password.value,
       })
     );
-    form.reset()
+    form.reset();
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email
-        <input type="text" name="email" />
-      </label>
-      <br />
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <br />
-      <button type="submit">Log In</button>
-    </form>
-  );
+  return <LoginForm handleSubmit={handleSubmit} />;
 };
 
 export default LogIn;
