@@ -8,6 +8,8 @@ import LogIn from "./Pages/LogIn";
 import Register from "./Pages/Register";
 import { refreshUser } from "./redux/auth/operations";
 import { useAuth } from "./hooks/useAuth";
+import RestrictedRoute from "./Components/RestrictedRoute";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,9 +25,24 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="contacts" element={<Contacts />} />
-        <Route path="logIn" element={<LogIn />} />
-        <Route path="register" element={<Register />} />
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute component={<Contacts />} redirectTo="/logIn" />
+          }
+        />
+        <Route
+          path="logIn"
+          element={
+            <RestrictedRoute component={<LogIn />} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute component={<Register />} redirectTo="/contacts" />
+          }
+        />
       </Route>
     </Routes>
   );
