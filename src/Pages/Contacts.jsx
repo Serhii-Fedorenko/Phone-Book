@@ -7,10 +7,11 @@ import {
   deleteContact,
   fetchContacts,
 } from "../redux/contacts/operations";
+import { selectContacts } from "../redux/contacts/selectors";
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts.items);
+  const contacts = useSelector(selectContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
