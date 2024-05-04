@@ -2,16 +2,19 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Contact from "../Components/Contact";
 import ContactForm from "../Components/ContactForm";
+import Modal from "../Components/Modal/Modal";
 import {
   addContact,
   deleteContact,
   fetchContacts,
 } from "../redux/contacts/operations";
 import { selectContacts } from "../redux/contacts/selectors";
+import { toggleModal } from "../redux/modal/slice";
 
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const isModalOpen = useSelector((state) => state.modal.isModalOpen);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -31,10 +34,21 @@ const Contacts = () => {
 
   const handleDelete = (id) => dispatch(deleteContact(id));
 
+  const openModal = () => {
+    dispatch(toggleModal());
+  };
+
   return (
     <div>
       <h2>Contacts Page</h2>
-      <ContactForm handleSubmit={handleSubmit} />
+      <button type="button" onClick={() => openModal()}>
+        Add contact
+      </button>
+      {isModalOpen && (
+        <Modal>
+          <ContactForm handleSubmit={handleSubmit} />
+        </Modal>
+      )}
       <ul>
         {contacts &&
           contacts.map((contact) => (
