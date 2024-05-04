@@ -4,6 +4,7 @@ import { addContact, deleteContact, fetchContacts } from "./operations";
 const initialState = {
   items: [],
   isLoading: false,
+  filter: "",
   error: null,
 };
 
@@ -19,6 +20,11 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)
@@ -47,5 +53,7 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, handleRejected);
   },
 });
+
+export const { setFilter } = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;
