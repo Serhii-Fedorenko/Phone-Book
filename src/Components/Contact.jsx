@@ -1,6 +1,12 @@
-const Contact = ({ contact, handleDelete }) => {
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../redux/contacts/operations";
+
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => dispatch(deleteContact(id));
   return (
-    <li key={contact.id}>
+    <li>
       <span style={{ marginRight: "10px" }}>{contact.name}</span>
       <span>{contact.number}</span>
       <span>
