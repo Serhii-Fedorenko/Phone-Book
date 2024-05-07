@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { useAuth } from "../hooks/useAuth";
 import { logOut } from "../redux/auth/operations";
-import { Grid } from "@mui/material";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Grid, Button, Typography } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const UserMenu = () => {
   const { user } = useAuth();
@@ -14,11 +14,17 @@ const UserMenu = () => {
       alignItems="center"
       sx={{ width: "fit-content" }}
     >
-      <p>Welcome, {user.name}</p>
-      <AccountCircleIcon />
-      <button type="button" onClick={() => dispatch(logOut())} style={{}}>
+      <Typography mr={1}>Welcome, {user.name}</Typography>
+      <AccountCircleIcon fontSize="large"/>
+      <Button
+        variant="contained"
+        color="secondary"
+        sx={{ml: 1}}
+        type="button"
+        onClick={() => dispatch(logOut())}
+      >
         Log Out
-      </button>
+      </Button>
     </Grid>
   );
 };

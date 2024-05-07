@@ -30,8 +30,12 @@ const Layout = () => {
           )}
           {!isLoggedIn && (
             <>
-              <NavLink to="/logIn">Log In</NavLink>
-              <NavLink to="/register">Sign In</NavLink>
+              <Button component={NavLink} to="/logIn" color="white">
+                Log In
+              </Button>
+              <Button component={NavLink} to="/register" color="white">
+                Sign In
+              </Button>
             </>
           )}
         </Grid>
