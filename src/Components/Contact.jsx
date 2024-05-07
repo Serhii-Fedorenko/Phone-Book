@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../redux/contacts/operations";
-import {TableRow, TableCell, Button} from "@mui/material";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { TableRow, TableCell, Button } from "@mui/material";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
@@ -14,7 +14,9 @@ const Contact = ({ contact }) => {
       </TableCell>
       <TableCell align="right">{contact.number}</TableCell>
       <TableCell align="right">
-        <Button variant='text' onClick={() => handleDelete(contact.id)}><DeleteForeverIcon color="secondary" /></Button>
+        <Button variant="text" onClick={() => handleDelete(contact.id)}>
+          <DeleteForeverIcon color="secondary" />
+        </Button>
       </TableCell>
     </TableRow>
   );

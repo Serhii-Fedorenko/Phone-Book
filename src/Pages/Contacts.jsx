@@ -8,13 +8,17 @@ import { fetchContacts } from "../redux/contacts/operations";
 import { selectContacts, selectFilter } from "../redux/contacts/selectors";
 import { selectIsModalOpen } from "../redux/modal/selectors";
 import { toggleModal } from "../redux/modal/slice";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Grid,
+  Button,
+} from "@mui/material";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -40,11 +44,18 @@ const Contacts = () => {
   const visibleContacts = filteredContacts();
 
   return (
-    <div>
-      <button type="button" onClick={() => openModal()}>
-        Add contact
-      </button>
-      <SearchForm />
+    <Grid
+      container
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Grid container justifyContent="center" alignItems="center">
+        <Button variant="outlined" type="button" onClick={() => openModal()}>
+          Add contact
+        </Button>
+        <SearchForm />
+      </Grid>
       {isModalOpen && (
         <Modal>
           <ContactForm />
@@ -70,7 +81,7 @@ const Contacts = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Grid>
   );
 };
 
