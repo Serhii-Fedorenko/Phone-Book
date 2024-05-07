@@ -63,7 +63,7 @@ const Contacts = () => {
       )}
       <TableContainer
         component={Paper}
-        sx={{ width: "60%", ml: "auto", mr: "auto" }}
+        sx={{ width: "100%", ml: "auto", mr: "auto" }}
       >
         <Table aria-label="simple table">
           <TableHead>
