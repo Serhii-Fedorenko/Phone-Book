@@ -3,38 +3,44 @@ import { Outlet, NavLink } from "react-router-dom";
 import UserMenu from "./UserMenu";
 import { useAuth } from "../hooks/useAuth";
 import { Container } from "@mui/system";
-import { AppBar, Grid } from "@mui/material";
+import { AppBar, Grid, Button } from "@mui/material";
 
 const Layout = () => {
   const { isLoggedIn } = useAuth();
 
   return (
     <Container>
-      <AppBar>
+      <AppBar sx={{ p: "5px" }}>
         <Grid
           component="nav"
           container
           justifyContent="space-around"
           alignItems="center"
         >
-          <NavLink to="/">Home</NavLink>
+          <Button component={NavLink} to="/" color="white">
+            Home
+          </Button>
           {isLoggedIn && (
             <>
-              <NavLink to="/contacts">Contacts</NavLink>
+              <Button component={NavLink} to="/contacts" color="white">
+                Contacts
+              </Button>
               <UserMenu />
             </>
           )}
           {!isLoggedIn && (
-            <div>
+            <>
               <NavLink to="/logIn">Log In</NavLink>
               <NavLink to="/register">Sign In</NavLink>
-            </div>
+            </>
           )}
         </Grid>
       </AppBar>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <Container sx={{ mt: "80px" }}>
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </Container>
     </Container>
   );
 };

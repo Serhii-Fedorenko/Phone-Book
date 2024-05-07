@@ -11,6 +11,8 @@ import { useAuth } from "./hooks/useAuth";
 import RestrictedRoute from "./Components/RestrictedRoute";
 import PrivateRoute from "./Components/PrivateRoute";
 
+
+
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
