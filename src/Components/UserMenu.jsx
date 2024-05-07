@@ -14,7 +14,7 @@ const UserMenu = () => {
       alignItems="center"
       sx={{ width: "fit-content" }}
     >
-      <Typography mr={1}>Welcome, {user.name}</Typography>
+      <Typography variant='h6' mr={1}>Welcome, {user.name}</Typography>
       <AccountCircleIcon fontSize="large"/>
       <Button
         variant="contained"

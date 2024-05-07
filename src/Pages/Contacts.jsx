@@ -8,6 +8,13 @@ import { fetchContacts } from "../redux/contacts/operations";
 import { selectContacts, selectFilter } from "../redux/contacts/selectors";
 import { selectIsModalOpen } from "../redux/modal/selectors";
 import { toggleModal } from "../redux/modal/slice";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -34,7 +41,6 @@ const Contacts = () => {
 
   return (
     <div>
-      <h2>Contacts Page</h2>
       <button type="button" onClick={() => openModal()}>
         Add contact
       </button>
@@ -44,12 +50,26 @@ const Contacts = () => {
           <ContactForm />
         </Modal>
       )}
-      <ul>
-        {contacts &&
-          visibleContacts.map((contact) => (
-            <Contact key={contact.id} contact={contact} />
-          ))}
-      </ul>
+      <TableContainer
+        component={Paper}
+        sx={{ width: "60%", ml: "auto", mr: "auto" }}
+      >
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Phone Number</TableCell>
+              <TableCell align="right">Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {contacts &&
+              visibleContacts.map((contact) => (
+                <Contact key={contact.id} contact={contact} />
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
