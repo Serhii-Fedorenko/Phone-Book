@@ -18,12 +18,12 @@ const Layout = () => {
           alignItems="center"
         >
           <Button component={NavLink} to="/" color="white">
-            <Typography variant="h6">Home</Typography>
+            <Typography fontSize={'3vmin'}>Home</Typography>
           </Button>
           {isLoggedIn && (
             <>
               <Button component={NavLink} to="/contacts" color="white">
-                <Typography variant="h6">Contacts</Typography>
+                <Typography fontSize={'3vmin'}>Contacts</Typography>
               </Button>
               <UserMenu />
             </>
@@ -31,10 +31,10 @@ const Layout = () => {
           {!isLoggedIn && (
             <>
               <Button component={NavLink} to="/logIn" color="white">
-                <Typography variant="h6">Log In</Typography>
+                <Typography fontSize={'3vmin'}>Log In</Typography>
               </Button>
               <Button component={NavLink} to="/register" color="white">
-                <Typography variant="h6">Sign In</Typography>
+                <Typography fontSize={'3vmin'}>Sign In</Typography>
               </Button>
             </>
           )}
