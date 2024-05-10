@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/auth/operations";
+import { TextField, Grid, Button } from "@mui/material";
 
 const LoginForm = () => {
-
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -17,19 +17,32 @@ const LoginForm = () => {
     form.reset();
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email
-        <input type="text" name="email" />
-      </label>
-      <br />
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <br />
-      <button type="submit">Log In</button>
-    </form>
+    <Grid
+      component="form"
+      container
+      justifyContent="space-around"
+      alignItems="center"
+      direction="column"
+      onSubmit={handleSubmit}
+    >
+      <TextField
+        type="text"
+        name="email"
+        label="Email"
+        variant="outlined"
+        margin="normal"
+      />
+      <TextField
+        type="password"
+        name="password"
+        label="Password"
+        variant="outlined"
+        margin="normal"
+      />
+      <Button type="submit" variant="contained" sx={{margin: 2}}>
+        Log In
+      </Button>
+    </Grid>
   );
 };
 
