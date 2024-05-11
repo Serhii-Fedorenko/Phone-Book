@@ -6,7 +6,10 @@ import Modal from "../Components/Modal/Modal";
 import SearchForm from "../Components/SearchForm";
 import { fetchContacts } from "../redux/contacts/operations";
 import { selectContacts, selectFilter } from "../redux/contacts/selectors";
-import { selectIsModalOpen } from "../redux/modal/selectors";
+import {
+  selectIsEditModalOpen,
+  selectIsModalOpen,
+} from "../redux/modal/selectors";
 import { toggleModal } from "../redux/modal/slice";
 import {
   Table,
@@ -24,6 +27,7 @@ const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isModalOpen = useSelector(selectIsModalOpen);
+  const isEditModalOpen = useSelector(selectIsEditModalOpen);
   const filter = useSelector(selectFilter);
 
   useEffect(() => {
@@ -56,10 +60,8 @@ const Contacts = () => {
         </Button>
         <SearchForm />
       </Grid>
-      {isModalOpen && (
-        <Modal>
-          <ContactForm />
-        </Modal>
+      {isModalOpen  && (
+        <Modal><ContactForm /></Modal>
       )}
       <TableContainer
         component={Paper}
@@ -70,6 +72,7 @@ const Contacts = () => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell align="right">Phone Number</TableCell>
+              <TableCell align="right">Edit</TableCell>
               <TableCell align="right">Delete</TableCell>
             </TableRow>
           </TableHead>
