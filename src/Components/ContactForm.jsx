@@ -1,8 +1,9 @@
 import { useDispatch } from "react-redux";
 import { addContact } from "../redux/contacts/operations";
+import { TextField, Grid, Button } from "@mui/material";
 
 const ContactForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,17 +17,32 @@ const ContactForm = () => {
     form.reset();
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Phone
-        <input type="tel" name="tel" />
-      </label>
-      <button type="submit">Add Contact</button>
-    </form>
+    <Grid
+      component="form"
+      container
+      justifyContent="space-around"
+      alignItems="center"
+      direction="column"
+      onSubmit={handleSubmit}
+    >
+      <TextField
+        type="text"
+        name="name"
+        label="Name"
+        variant="outlined"
+        margin="normal"
+      />
+      <TextField
+        type="number"
+        name="tel"
+        label="Phone number"
+        variant="outlined"
+        margin="normal"
+      />
+      <Button type="submit" variant="contained" sx={{ margin: 2 }}>
+        Add contact
+      </Button>
+    </Grid>
   );
 };
 
