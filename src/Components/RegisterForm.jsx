@@ -49,7 +49,7 @@ const RegisterForm = () => {
         margin="normal"
       />
       <Button type="submit" variant="contained" sx={{ margin: 2 }}>
-        Log In
+        Sign In
       </Button>
     </Grid>
   );

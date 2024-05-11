@@ -14,16 +14,18 @@ const UserMenu = () => {
       alignItems="center"
       sx={{ width: "fit-content" }}
     >
-      <Typography fontSize={'3vmin'} mr={1}>Welcome, {user.name}</Typography>
-      <AccountCircleIcon fontSize="large"/>
+      <Typography fontSize={"3vmin"} mr={1}>
+        Welcome, {user.name}
+      </Typography>
+      <AccountCircleIcon fontSize="medium" />
       <Button
         variant="contained"
         color="secondary"
-        sx={{ml: 1}}
+        sx={{ ml: 1 }}
         type="button"
         onClick={() => dispatch(logOut())}
       >
-        Log Out
+        <Typography fontSize={"2vmin"}>Log Out</Typography>
       </Button>
     </Grid>
   );

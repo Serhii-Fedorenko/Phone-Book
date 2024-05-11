@@ -50,7 +50,7 @@ const Contacts = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Grid container justifyContent="center" alignItems="center">
+      <Grid container justifyContent="center" alignItems="center" p={5}>
         <Button variant="outlined" type="button" onClick={() => openModal()}>
           Add contact
         </Button>
