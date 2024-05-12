@@ -4,6 +4,7 @@ import Contact from "../Components/Contact";
 import ContactForm from "../Components/ContactForm";
 import Modal from "../Components/Modal/Modal";
 import SearchForm from "../Components/SearchForm";
+import ContactEditForm from "../Components/ContactEditForm";
 import { fetchContacts } from "../redux/contacts/operations";
 import { selectContacts, selectFilter } from "../redux/contacts/selectors";
 import {
@@ -22,7 +23,6 @@ import {
   Grid,
   Button,
 } from "@mui/material";
-import ContactEditForm from "../Components/ContactEditForm";
 
 const Contacts = () => {
   const dispatch = useDispatch();

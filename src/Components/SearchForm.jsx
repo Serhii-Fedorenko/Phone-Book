@@ -12,7 +12,7 @@ const SearchForm = () => {
   return (
     <Input
       placeholder="Find contact"
-      sx={{marginLeft: '10px'}}
+      sx={{margin: '20px'}}
       type="text"
       name="filter"
       onChange={handleFilterChange}

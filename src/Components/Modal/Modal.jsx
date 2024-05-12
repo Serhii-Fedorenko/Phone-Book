@@ -7,6 +7,7 @@ import {
 } from "../../redux/modal/selectors";
 import { toggleModal, toggleEditModal } from "../../redux/modal/slice";
 import css from "./Modal.module.css";
+import CloseIcon from "@mui/icons-material/Close";
 
 const modalRoot = document.getElementById("modal-root");
 
@@ -43,9 +44,20 @@ const Modal = ({ children }) => {
     }
   };
 
+  const handleOnCloseBtnClick = () => {
+    isModalOpen ? dispatch(toggleModal()) : dispatch(toggleEditModal())
+  }
+
   return createPortal(
     <div className={css.Modal__backdrop} onClick={handleBackDropClick}>
-      <div className={css.Modal__content}>{children}</div>
+      <div className={css.Modal__content}>
+        <CloseIcon
+          color="secondary"
+          sx={{ position: "absolute", right: 10, top: 10, cursor: 'pointer' }}
+          onClick={handleOnCloseBtnClick}
+        />
+        {children}
+      </div>
     </div>,
     modalRoot
   );
