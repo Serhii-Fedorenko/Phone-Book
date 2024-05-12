@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Contact from "../Components/Contact";
 import ContactForm from "../Components/ContactForm";
@@ -10,7 +10,7 @@ import {
   selectIsEditModalOpen,
   selectIsModalOpen,
 } from "../redux/modal/selectors";
-import { toggleModal } from "../redux/modal/slice";
+import { toggleEditModal, toggleModal } from "../redux/modal/slice";
 import {
   Table,
   TableBody,
@@ -22,6 +22,7 @@ import {
   Grid,
   Button,
 } from "@mui/material";
+import ContactEditForm from "../Components/ContactEditForm";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const Contacts = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
   const isEditModalOpen = useSelector(selectIsEditModalOpen);
   const filter = useSelector(selectFilter);
+  const [editContactId, setEditContactId] = useState(null);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -36,6 +38,11 @@ const Contacts = () => {
 
   const openModal = () => {
     dispatch(toggleModal());
+  };
+
+  const openEditModal = (id) => {
+    setEditContactId(id);
+    dispatch(toggleEditModal());
   };
 
   const filteredContacts = () => {
@@ -60,8 +67,14 @@ const Contacts = () => {
         </Button>
         <SearchForm />
       </Grid>
-      {isModalOpen  && (
-        <Modal><ContactForm /></Modal>
+      {(isModalOpen || isEditModalOpen) && (
+        <Modal>
+          {isEditModalOpen ? (
+            <ContactEditForm contactId={editContactId} />
+          ) : (
+            <ContactForm />
+          )}
+        </Modal>
       )}
       <TableContainer
         component={Paper}
@@ -79,7 +92,11 @@ const Contacts = () => {
           <TableBody>
             {contacts &&
               visibleContacts.map((contact) => (
-                <Contact key={contact.id} contact={contact} />
+                <Contact
+                  key={contact.id}
+                  contact={contact}
+                  openEditModal={openEditModal}
+                />
               ))}
           </TableBody>
         </Table>
