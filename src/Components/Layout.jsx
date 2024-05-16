@@ -41,7 +41,7 @@ const Layout = () => {
         </Grid>
       </AppBar>
       <Container sx={{ mt: "80px" }}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<div>Loading page...</div>}>
           <Outlet />
         </Suspense>
       </Container>
